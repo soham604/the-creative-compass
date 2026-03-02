@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio — Orko Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Studio-page specific styles ── */
+
+    /* Hero — centered, full-width, dark */
+    .studio-hero {
+      background: var(--black);
+      padding-top: calc(var(--nav-h) + 100px);
+      padding-bottom: 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .studio-hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      opacity: .03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .studio-hero__badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--r-pill);
+      padding: .4rem 1rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,.45);
+      margin-bottom: 2.5rem;
+    }
+    .studio-hero__badge::before {
+      content: ''; display: block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .studio-hero h1 {
+      color: #fff;
+      font-size: clamp(2.5rem, 6.5vw, 6rem);
+      font-weight: 900; letter-spacing: -.04em;
+      line-height: .95; max-width: 880px;
+      margin: 0 auto 2rem;
+    }
+    .studio-hero h1 em { font-style: normal; color: rgba(255,255,255,.3); }
+    .studio-hero__sub {
+      font-size: 1.1rem; color: rgba(255,255,255,.45);
+      max-width: 500px; margin: 0 auto 2.5rem;
+    }
+    .studio-hero__addr {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .82rem; color: rgba(255,255,255,.28);
+      font-family: var(--font-b); letter-spacing: .05em;
+    }
+    .studio-hero__addr svg { width: 13px; height: 13px; }
+
+    /* Sets grid */
+    .sets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+    .set-card__img--portrait { aspect-ratio: 9/16 !important; }
+    .set-card {
+      border-radius: var(--r-lg); overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: box-shadow var(--t), transform var(--t);
+    }
+    .set-card:hover { box-shadow: var(--shadow-l); transform: translateY(-4px); }
+    .set-card__img {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--off2);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: .75rem;
+      color: var(--border2); position: relative; overflow: hidden;
+    }
+    .set-card__img svg { width: 36px; height: 36px; }
+    .set-card__img span { font-size: .72rem; font-weight: 500; color: var(--muted); }
+    .set-card__img--dark { background: #1a1a1a; }
+    .set-card__img--warm  { background: #f5efe8; }
+    .set-card__img--green { background: #e8f0e8; }
+    .set-card__img--mid   { background: #e8eaf0; }
+    .set-card__body { padding: 1.5rem; }
+    .set-card__tag {
+      display: inline-block; padding: .2rem .65rem;
+      border-radius: var(--r-pill); font-size: .68rem; font-weight: 600;
+      background: var(--off2); color: var(--muted); margin-bottom: .6rem;
+    }
+    .set-card h4 { font-size: 1.05rem; margin-bottom: .35rem; }
+    .set-card p  { font-size: .85rem; }
+
+    /* Sets filter tabs */
+    .sets-filter {
+      display: flex; gap: .4rem; justify-content: center;
+      background: var(--off2); padding: .35rem;
+      border-radius: var(--r-pill); width: fit-content;
+      margin: 0 auto 2rem;
+    }
+    .sets-filter__btn {
+      padding: .55rem 1.4rem; border-radius: var(--r-pill);
+      border: none; background: transparent;
+      font-family: var(--font-h); font-size: .85rem; font-weight: 600;
+      color: var(--muted); cursor: pointer;
+      transition: background var(--t), color var(--t);
+    }
+    .sets-filter__btn.active { background: var(--ink); color: var(--white); }
+    .set-card--hidden { display: none; }
+    .sets-grid--h4 { grid-template-columns: repeat(4, 1fr); }
+    .set-card { cursor: pointer; }
+
+    /* Coming soon card */
+    .set-card--soon {
+      cursor: default;
+      border-style: dashed;
+      background: transparent;
+    }
+    .set-card--soon:hover { box-shadow: none; transform: none; }
+    .set-card--soon .set-card__img {
+      background: var(--off);
+    }
+    .set-card--soon .set-card__img svg { opacity: .25; }
+    .set-card--soon .set-card__body { text-align: center; padding: 1.25rem; }
+    .set-card--soon h4 { font-size: .9rem; color: var(--muted); font-weight: 600; }
+    .set-card--soon .set-card__tag { opacity: .5; }
+
+    /* Lightbox */
+    .set-modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.9);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .set-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .set-modal {
+      display: flex; flex-direction: column; align-items: center;
+      max-height: 95vh; max-width: 95vw; gap: 1.25rem;
+    }
+    .set-modal__video {
+      border-radius: 14px; overflow: hidden; background: #111;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .set-modal__video video {
+      display: block; max-height: 72vh; max-width: 88vw;
+      width: auto; height: auto;
+    }
+    .set-modal__video--portrait video { max-width: 44vw; }
+    .set-modal__info { text-align: center; }
+    .set-modal__info h3 { color: #fff; font-size: 1.3rem; margin: .5rem 0 .4rem; }
+    .set-modal__info p  { color: rgba(255,255,255,.6); font-size: .88rem; max-width: 480px; }
+    .set-modal__close {
+      position: fixed; top: 1.25rem; right: 1.25rem;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,.12); border: none;
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .set-modal__close:hover { background: rgba(255,255,255,.22); }
+
+    /* Services type grid (6-col bordered) */
+    .stype-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
+    .stype-item {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      transition: background var(--t);
+    }
+    .stype-item:hover { background: var(--off); }
+    .stype-item:nth-child(6n) { border-right: none; }
+    .stype-item:nth-child(n+7) { border-bottom: none; }
+    .stype-item__ic {
+      font-size: 1.75rem; margin-bottom: .75rem; display: block;
+    }
+    .stype-item h5 {
+      font-size: .85rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem;
+    }
+    .stype-item p { font-size: .78rem; }
+
+    /* Inclusions tags */
+    .inclusions-wrap {
+      display: flex; flex-wrap: wrap; gap: .65rem; justify-content: center;
+      margin-top: 2.5rem;
+    }
+    .inc-tag {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .55rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--r-pill);
+      font-size: .85rem; font-weight: 500; color: var(--ink);
+      background: var(--white);
+    }
+    .inc-tag::before {
+      content: '✓'; color: var(--black); font-weight: 800; font-size: .7rem;
+    }
+
+    /* About split */
+    .about-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border: 1px solid var(--border);
+      border-radius: var(--r-lg); overflow: hidden;
+    }
+    .about-split__img {
+      background: var(--off2);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem; color: var(--muted);
+      min-height: 440px; border-right: 1px solid var(--border);
+      padding: 3rem;
+    }
+    .about-split__img svg { width: 48px; height: 48px; opacity: .25; }
+    .about-split__img span { font-size: .78rem; opacity: .4; }
+    .about-split__text {
+      padding: 3.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-split__text h3 { margin-bottom: 1.25rem; }
+    .about-split__text p  { margin-bottom: 1rem; font-size: .95rem; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .sets-grid    { grid-template-columns: repeat(2, 1fr); }
+      .stype-grid   { grid-template-columns: repeat(3, 1fr); }
+      .stype-item:nth-child(6n)   { border-right: 1px solid var(--border); }
+      .stype-item:nth-child(3n)   { border-right: none; }
+      .stype-item:nth-child(n+4)  { border-bottom: none; }
+    }
+    @media (max-width: 768px) {
+      .studio-hero h1 { font-size: clamp(2rem,8vw,3.5rem); }
+      .sets-grid    { grid-template-columns: 1fr; }
+      .stype-grid   { grid-template-columns: repeat(2, 1fr); }
+      .stype-item:nth-child(3n) { border-right: 1px solid var(--border); }
+      .stype-item:nth-child(2n) { border-right: none; }
+      .stype-item:nth-child(n+5) { border-bottom: none; }
+      .about-split  { grid-template-columns: 1fr; }
+      .about-split__img { min-height: 220px; border-right: none; border-bottom: 1px solid var(--border); }
+      .about-split__text { padding: 2.25rem; }
+    }
+    @media (max-width: 480px) {
+      .stype-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo"><span class="nav__logo-word">orko</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li><li><a href="portfolio.html">Work</a></li>
+      <li><a href="studio.html">Studio</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav__cta">
+      Get in Touch
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+    </a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+  <a href="portfolio.html">Work</a><a href="studio.html">Studio</a><a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn--black" style="align-self:flex-start;margin-top:.5rem">Get in Touch</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="studio-hero">
+  <div class="container">
+    <div class="studio-hero__badge">Available for hire — Montréal, QC</div>
+    <h1>One studio.<br><em>Twelve sets.</em><br>Zero compromise.</h1>
+    <p class="studio-hero__sub">
+      A professional studio in the heart of Montréal. Camera, lighting, mic, teleprompter and 12 unique sets — everything included. You show up, you shoot.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem">
+      <a href="#sets"        class="btn btn--white">Explore the Sets</a>
+      <a href="contact.html" class="btn btn--white-out">Contact Us</a>
+    </div>
+    <div class="studio-hero__addr">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      111 Rue Chabanel O, Suite 410 — Montréal, QC H2N 1C3
+    </div>
+  </div>
+</section>
+
+<!-- ── SETS SHOWCASE ── -->
+<section class="section" id="sets">
+  <div class="container">
+    <div class="sh">
+      <span class="eyebrow">The spaces</span>
+      <h2 style="margin:.65rem 0 1rem">Twelve unique sets.<br>Every atmosphere.</h2>
+      <p>Every set is purpose-designed, fully equipped, and ready to shoot. No sourcing. No setup surprises.</p>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="sets-filter">
+      <button class="sets-filter__btn active" data-filter="vertical"   onclick="filterSets('vertical')">Vertical</button>
+      <button class="sets-filter__btn"        data-filter="horizontal" onclick="filterSets('horizontal')">Horizontal</button>
+      <button class="sets-filter__btn"        data-filter="podcast"    onclick="filterSets('podcast')">Podcast</button>
+    </div>
+
+    <div class="sets-grid" id="setsGrid">
+
+      <!-- L'Atelier — horizontal -->
+      <div class="set-card fade-up" data-orientation="horizontal" onclick="openSet(this,false,&quot;L\'Atelier&quot;,'Creative &amp; Professional','Creative studio atmosphere with bookshelf backdrop, ambient lighting and work desk. Perfect for storytelling, webinars and training content.')">
+        <div class="set-card__img">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478708/L_atelier_rjy235.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Creative &amp; Professional</span>
+          <h4>L'Atelier</h4>
+          <p>Creative studio atmosphere with bookshelf backdrop, ambient lighting and work desk. Perfect for storytelling, webinars and training content.</p>
+        </div>
+      </div>
+
+      <!-- Haven — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Haven','Warm &amp; Welcoming','Decorative shelving, soft lighting and neutral tones. A versatile setup ideal for interviews, testimonials and inspirational content.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478750/Haven_plnaby.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Warm &amp; Welcoming</span>
+          <h4>Haven</h4>
+          <p>Decorative shelving, soft lighting and neutral tones. A versatile setup ideal for interviews, testimonials and inspirational content.</p>
+        </div>
+      </div>
+
+      <!-- Oasis — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Oasis','Tropical &amp; Vibrant','Large tropical plants, wooden slat backdrop and podcast microphone. An organic, energetic atmosphere for interviews and authentic conversations.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478765/Oasis_mvc0uc.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Tropical &amp; Vibrant</span>
+          <h4>Oasis</h4>
+          <p>Large tropical plants, wooden slat backdrop and podcast microphone. An organic, energetic atmosphere for interviews and authentic conversations.</p>
+        </div>
+      </div>
+
+      <!-- Forum — podcast -->
+      <div class="set-card fade-up" data-orientation="podcast" onclick="openSet(this,false,'Forum','Podcast &amp; Panel','Multi-camera podcast setup with professional directional mics and custom ambiance. One of our most popular sets for shows, panels and group interviews.')">
+        <div class="set-card__img">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478733/Forum_k87app.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Podcast &amp; Panel</span>
+          <h4>Forum</h4>
+          <p>Multi-camera podcast setup with professional directional mics and custom ambiance. One of our most popular sets for shows, panels and group interviews.</p>
+        </div>
+      </div>
+
+      <!-- Legacy — horizontal -->
+      <div class="set-card fade-up" data-orientation="horizontal" onclick="openSet(this,false,'Legacy','Premium &amp; Cinematic','Moody, high-end cinematic aesthetic with dramatic lighting. Built for premium brand content, executive interviews and productions that demand presence.')">
+        <div class="set-card__img">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478747/Legacy_b6zg29.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Premium &amp; Cinematic</span>
+          <h4>Legacy</h4>
+          <p>Moody, high-end cinematic aesthetic with dramatic lighting. Built for premium brand content, executive interviews and productions that demand presence.</p>
+        </div>
+      </div>
+
+      <!-- Chronos — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Chronos','Sleek &amp; Modern','A clean, contemporary set with precise lighting and a timeless aesthetic. Ideal for tech, finance, and forward-facing brand content.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478761/Chronos_sog1md.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Sleek &amp; Modern</span>
+          <h4>Chronos</h4>
+          <p>A clean, contemporary set with precise lighting and a timeless aesthetic. Ideal for tech, finance, and forward-facing brand content.</p>
+        </div>
+      </div>
+
+      <!-- Ekna — podcast -->
+      <div class="set-card fade-up" data-orientation="podcast" onclick="openSet(this,false,'Ekna','Bold &amp; Creative','A distinctive, character-rich set that brings energy and edge. Perfect for creators, entrepreneurs and content that refuses to blend in.')">
+        <div class="set-card__img">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478688/Ekna_eq1adg.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Bold &amp; Creative</span>
+          <h4>Ekna</h4>
+          <p>A distinctive, character-rich set that brings energy and edge. Perfect for creators, entrepreneurs and content that refuses to blend in.</p>
+        </div>
+      </div>
+
+      <!-- Encore — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Encore','Stage &amp; Performance','Dramatic and commanding — built for performances, keynotes, and content that demands to be remembered.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478757/Encore_rnjoiu.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Stage &amp; Performance</span>
+          <h4>Encore</h4>
+          <p>Dramatic and commanding — built for performances, keynotes, and content that demands to be remembered.</p>
+        </div>
+      </div>
+
+      <!-- Lauters — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Lauters','Editorial &amp; Refined','A sophisticated, editorial-grade set with refined details and soft directional light. Made for brands that value taste and precision.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478725/Lauters_wb1o5k.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Editorial &amp; Refined</span>
+          <h4>Lauters</h4>
+          <p>A sophisticated, editorial-grade set with refined details and soft directional light. Made for brands that value taste and precision.</p>
+        </div>
+      </div>
+
+      <!-- Ombre — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Ombre','Moody &amp; Atmospheric','Gradient lighting and deep tones create an immersive, cinematic mood. Ideal for fashion, beauty and high-concept editorial shoots.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772479232/Ombre_i9ezqd.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Moody &amp; Atmospheric</span>
+          <h4>Ombre</h4>
+          <p>Gradient lighting and deep tones create an immersive, cinematic mood. Ideal for fashion, beauty and high-concept editorial shoots.</p>
+        </div>
+      </div>
+
+      <!-- Sapling — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Sapling','Natural &amp; Organic','A fresh, nature-inspired set with soft greens and earthy tones. Perfect for wellness, lifestyle and sustainability-focused content.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478758/Sapling_p3nhoy.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Natural &amp; Organic</span>
+          <h4>Sapling</h4>
+          <p>A fresh, nature-inspired set with soft greens and earthy tones. Perfect for wellness, lifestyle and sustainability-focused content.</p>
+        </div>
+      </div>
+
+      <!-- Splinter — vertical -->
+      <div class="set-card fade-up" data-orientation="vertical" onclick="openSet(this,true,'Splinter','Raw &amp; Industrial','Exposed textures, raw materials and hard light give this set an edgy, industrial character. Built for bold brands with something to say.')">
+        <div class="set-card__img set-card__img--portrait">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <source src="https://res.cloudinary.com/dzmt4mkjc/video/upload/v1772478752/Splinter_k3qzpg.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Raw &amp; Industrial</span>
+          <h4>Splinter</h4>
+          <p>Exposed textures, raw materials and hard light give this set an edgy, industrial character. Built for bold brands with something to say.</p>
+        </div>
+      </div>
+
+      <!-- Coming soon — vertical -->
+      <div class="set-card set-card--soon fade-up" data-orientation="vertical">
+        <div class="set-card__img set-card__img--portrait">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Coming Soon</span>
+          <h4>More sets on the way</h4>
+        </div>
+      </div>
+
+      <!-- Coming soon — horizontal -->
+      <div class="set-card set-card--soon fade-up" data-orientation="horizontal">
+        <div class="set-card__img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Coming Soon</span>
+          <h4>More sets on the way</h4>
+        </div>
+      </div>
+
+      <!-- Coming soon — podcast -->
+      <div class="set-card set-card--soon fade-up" data-orientation="podcast">
+        <div class="set-card__img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <div class="set-card__body">
+          <span class="set-card__tag">Coming Soon</span>
+          <h4>More sets on the way</h4>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+    function filterSets(orientation) {
+      document.querySelectorAll('.sets-filter__btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.filter === orientation);
+      });
+      var grid = document.getElementById('setsGrid');
+      grid.classList.remove('sets-grid--h4');
+      document.querySelectorAll('#setsGrid .set-card').forEach(function(card) {
+        card.classList.toggle('set-card--hidden', card.dataset.orientation !== orientation);
+      });
+    }
+    filterSets('vertical');
+
+    </script>
+  </div>
+</section>
+
+<!-- ── ABOUT / PHILOSOPHY ── -->
+<div class="band">
+  <section class="section-sm">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-split__img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Studio photo</span>
+        </div>
+        <div class="about-split__text">
+          <span class="eyebrow" style="margin-bottom:1rem">The story</span>
+          <h3>A $100,000 investment to build the studio Montréal deserved.</h3>
+          <p>Orko Media is the story of Soham Dey — an entrepreneur who took a risk at 17 by dropping out of college to buy a camera, without even knowing how to use it.</p>
+          <p>A few years later, that bet became a professional studio in the heart of Montréal. After months of hard work and a $100,000 investment, the Orko studio now offers 12 unique sets — from clean minimalist to cinematic luxury.</p>
+          <p style="margin-bottom:0">All professional equipment is included: camera, lighting, mic and teleprompter. Whether it's a podcast, webinar, social content or high-end production — you arrive, you set up, you shoot. No compromise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── SERVICE TYPES ── -->
+<section class="section">
+  <div class="container">
+    <div class="sh sh--c">
+      <span class="eyebrow">What you can shoot</span>
+      <h2 style="margin-top:.65rem">Built for every format.</h2>
+      <p>Whether it's a 60-second social clip or a full-day commercial shoot, our studio adapts to what you need.</p>
+    </div>
+
+    <div style="border-top:1px solid var(--border);border-left:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden">
+      <div class="stype-grid">
+        <div class="stype-item fade-up">
+          <span class="stype-item__ic">📱</span>
+          <h5>Social Content</h5>
+          <p>Reels, TikToks, face-to-camera and sales videos — studio quality, ready to post</p>
+        </div>
+        <div class="stype-item fade-up">
+          <span class="stype-item__ic">🎙️</span>
+          <h5>Podcast</h5>
+          <p>Multi-camera, professional mic, custom ambiance — multiple sets to match your show's tone</p>
+        </div>
+        <div class="stype-item fade-up">
+          <span class="stype-item__ic">💻</span>
+          <h5>Webinar</h5>
+          <p>Teleprompter, direct camera-mic connection and controlled image for a credible, seamless delivery</p>
+        </div>
+        <div class="stype-item fade-up">
+          <span class="stype-item__ic">🎤</span>
+          <h5>Interview</h5>
+          <p>Warm and professional sets — ideal for client testimonials, portraits and in-depth discussions</p>
+        </div>
+        <div class="stype-item fade-up">
+          <span class="stype-item__ic">🏢</span>
+          <h5>Corporate</h5>
+          <p>Presentation videos, internal training and company messages in an environment that inspires trust</p>
+        </div>
+        <div class="stype-item fade-up">
+          <span class="stype-item__ic">🎬</span>
+          <h5>Advertising</h5>
+          <p>Cinematic lighting, multiple sets and high-end production quality for your video ads</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INCLUSIONS ── -->
+<div class="band">
+  <section class="section-sm">
+    <div class="container" style="text-align:center">
+      <div class="sh sh--c" style="margin-bottom:0">
+        <span class="eyebrow">Everything included</span>
+        <h2 style="margin:.65rem 0 1rem">You don't need to bring a thing.</h2>
+        <p>Arrive with your idea — we have everything else. No hidden extras, no rentals on top.</p>
+      </div>
+      <div class="inclusions-wrap">
+        <span class="inc-tag">Professional Camera</span>
+        <span class="inc-tag">Studio Lighting</span>
+        <span class="inc-tag">Professional Microphone</span>
+        <span class="inc-tag">Teleprompter</span>
+        <span class="inc-tag">12 Unique Sets</span>
+        <span class="inc-tag">Work Desk</span>
+        <span class="inc-tag">Internet Connection</span>
+        <span class="inc-tag">On-site Parking</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── FAQ ── -->
+<div class="band">
+  <section class="section-sm">
+    <div class="container" style="max-width:760px">
+      <div class="sh"><span class="eyebrow">FAQ</span><h2 style="margin-top:.65rem">Common questions.</h2></div>
+      <details class="fade-up">
+        <summary>Where is the studio located?</summary>
+        <p>The studio is at 111 Rue Chabanel O, Suite 410, Montréal, QC H2N 1C3. On-site parking is available for crew and clients.</p>
+      </details>
+      <details class="fade-up">
+        <summary>What's included in every booking?</summary>
+        <p>Everything is included: professional camera, studio lighting, professional microphone, teleprompter, work desk, internet connection and access to all 12 sets. Just arrive with your idea.</p>
+      </details>
+      <details class="fade-up">
+        <summary>How many sets are available?</summary>
+        <p>12 unique sets, each with its own atmosphere — from clean minimalist to cinematic luxury, multi-camera podcast setups and tropical environments.</p>
+      </details>
+      <details class="fade-up">
+        <summary>Can I record a podcast at the studio?</summary>
+        <p>Absolutely. Several sets are specifically designed for podcasts, with professional microphones, multi-camera setups and custom ambiance. Forum, Oasis and Legacy are particularly popular for podcast recordings.</p>
+      </details>
+      <details class="fade-up">
+        <summary>Can I bring my own crew and equipment?</summary>
+        <p>Yes — external crews are welcome. You can use our included equipment package or bring your own. Let us know in advance and we'll prepare the studio to your spec.</p>
+      </details>
+      <details class="fade-up">
+        <summary>Do you offer post-production as well?</summary>
+        <p>Yes. We offer a full post-production service — editing, colour grading, sound design and delivery. Get in touch and we'll put together a package that covers everything.</p>
+      </details>
+    </div>
+  </section>
+</div>
+
+<!-- ── BOOKING CTA ── -->
+<section class="cta-band" id="booking">
+  <div class="container">
+    <span class="eyebrow">Ready to shoot?</span>
+    <h2>Book your session<br>at Studio Orko.</h2>
+    <p>Send us your project details — we'll get back to you within 24 hours.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn--white">
+        Contact Us
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__top"><div class="container"><div class="footer__grid">
+    <div><div class="footer__logo">orko media</div><p class="footer__tagline">A full-service media production studio crafting cinematic stories for ambitious brands worldwide.</p></div>
+    <div class="footer__col"><h5>Navigate</h5><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Work</a><a href="studio.html">Studio</a><a href="contact.html">Contact</a></div>
+    <div class="footer__col"><h5>Services</h5><a href="services.html">Commercial Video</a><a href="services.html">Photography</a><a href="services.html">Post-Production</a><a href="services.html">Branded Content</a></div>
+    <div class="footer__col"><h5>Contact</h5><a href="mailto:hello@orkomedia.com">hello@orkomedia.com</a><a href="tel:+15551234567">+1 555 123 4567</a><a href="studio.html">Our Studio</a></div>
+  </div></div></div>
+  <div class="container"><div class="footer__bottom"><p class="footer__copy">© 2025 Orko Media. All rights reserved.</p><div class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div></div>
+</footer>
+<script src="js/main.js"></script>
+
+<!-- Set lightbox modal -->
+<div class="set-modal-overlay" id="setModal" onclick="handleModalClick(event)">
+  <button class="set-modal__close" onclick="closeSet()">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M1 1l12 12M13 1L1 13"/></svg>
+  </button>
+  <div class="set-modal" id="setModalInner">
+    <div class="set-modal__video" id="setModalVideoWrap"></div>
+    <div class="set-modal__info">
+      <span class="set-card__tag" id="setModalTag"></span>
+      <h3 id="setModalName"></h3>
+      <p id="setModalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+var _origParent = null, _origStyle = '';
+function openSet(cardEl, isPortrait, name, tag, desc) {
+  var video = cardEl.querySelector('video');
+  var wrap  = document.getElementById('setModalVideoWrap');
+  _origParent = video.parentElement;
+  _origStyle  = video.getAttribute('style') || '';
+  var maxW = isPortrait ? '44vw' : '88vw';
+  video.setAttribute('style', 'display:block;max-height:72vh;max-width:' + maxW + ';width:auto;height:auto;border-radius:14px');
+  wrap.appendChild(video);
+  wrap.classList.toggle('set-modal__video--portrait', isPortrait);
+  document.getElementById('setModalTag').innerHTML   = tag;
+  document.getElementById('setModalName').textContent = name;
+  document.getElementById('setModalDesc').textContent = desc;
+  document.getElementById('setModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSet() {
+  var video = document.querySelector('#setModalVideoWrap video');
+  if (video && _origParent) {
+    video.setAttribute('style', _origStyle);
+    _origParent.appendChild(video);
+    _origParent = null;
+  }
+  document.getElementById('setModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleModalClick(e) {
+  if (e.target === document.getElementById('setModal')) closeSet();
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSet();
+});
+</script>
+</body>
+</html>

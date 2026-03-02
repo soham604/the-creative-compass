@@ -1,0 +1,10 @@
+# Video files (too large for GitHub — host on CDN/cloud storage)
+videos/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude
+.claude/
