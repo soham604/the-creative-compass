@@ -57,6 +57,7 @@
       text-decoration: none; transition: opacity .2s;
     }
     .nav-cta:hover { opacity: 0.88; }
+    .cta-short { display: none; }
 
     /* ── HERO ─────────────────────────────────────── */
     .hero {
@@ -360,6 +361,10 @@
     @media (max-width: 768px) {
       nav { padding: 0 5vw; }
       .nav-links { display: none; }
+      .nav-logo { font-size: 0.9rem; }
+      .nav-cta { padding: 0.45rem 0.9rem; font-size: 0.78rem; white-space: nowrap; align-self: center; }
+      .cta-long { display: none; }
+      .cta-short { display: inline; }
       .how { grid-template-columns: 1fr; gap: 2rem; }
       .how-visual { order: -1; }
     }
@@ -379,7 +384,10 @@
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#pricing">Pricing</a></li>
     </ul>
-    <a href="#pricing" class="nav-cta">Reserve Your Spot</a>
+    <a href="#pricing" class="nav-cta">
+      <span class="cta-long">Reserve Your Spot</span>
+      <span class="cta-short">Book Now</span>
+    </a>
   </nav>
 
   <!-- HERO -->
