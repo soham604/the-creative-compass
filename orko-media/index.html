@@ -153,6 +153,8 @@
       .stats-hl { padding: 60px 0; }
       .work-reel__item { height: clamp(140px, 22vw, 310px); }
       .marquee-wrap { padding: 1.25rem 0; }
+      .cta-cal-embed { display: none !important; }
+      .cta-cal-btns { display: flex !important; }
     }
     @media (max-width: 480px) {
       h1 { font-size: clamp(1.5rem, 7vw, 2.25rem) !important; }
@@ -576,13 +578,19 @@
     <span class="eyebrow">Ready to create?</span>
     <h2>Let's make something<br>remarkable together.</h2>
     <p>Pick a time — we'll discuss your project and put together a tailored proposal.</p>
-    <div style="max-width:900px;margin:2.5rem auto 0;border-radius:var(--r-lg);overflow:hidden">
+    <!-- Desktop: inline embed -->
+    <div class="cta-cal-embed" style="max-width:900px;margin:2.5rem auto 0;border-radius:var(--r-lg);overflow:hidden">
       <cal-inline
         namespace="appel-decouverte-home"
         style="width:100%;min-height:600px;display:block"
         calLink="orkomedia/appel-decouverte"
         config='{"layout":"month_view"}'
       ></cal-inline>
+    </div>
+    <!-- Mobile: buttons -->
+    <div class="cta-cal-btns" style="display:none;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem">
+      <a href="https://cal.com/orkomedia/appel-decouverte" target="_blank" rel="noopener" class="btn btn--white">Book a Call</a>
+      <a href="portfolio.html" class="btn btn--white-out">See Our Work</a>
     </div>
     <script type="text/javascript">
       (function (C, A, L) {
