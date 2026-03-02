@@ -41,6 +41,15 @@
     .port-grid--portrait { grid-template-columns: repeat(4, 1fr); }
     .port-item--portrait { aspect-ratio: 9/16; }
 
+    /* YouTube / landscape thumbnail items */
+    .port-item--yt { aspect-ratio: 16/9; }
+
+    /* 2-column grid */
+    .port-grid--2col { grid-template-columns: repeat(2, 1fr); }
+
+    /* Embed items (TikTok / Instagram) */
+    .port-item--embed { padding: 0; overflow: hidden; border: none; }
+    .port-item--embed iframe { width: 100%; height: 100%; border: none; display: block; }
 
     /* Pagination */
     .work-pagination {
@@ -106,12 +115,22 @@
     <div class="work-section active" id="tab-short-form">
       <div class="work-section__hd">
         <span class="eyebrow">Short Form</span>
-        <h2 id="hd-short-form">Maxime Belma</h2>
+        <h2 id="hd-short-form">Serujan Kaneshalingam</h2>
         <p>High-impact short form content built for Reels, TikTok and Shorts — shot vertical-first at the studio.</p>
       </div>
 
       <!-- Page 1 -->
-      <div class="work-page active" data-section="short-form" data-page="0" data-title="Maxime Belma">
+      <div class="work-page active" data-section="short-form" data-page="0" data-title="Serujan Kaneshalingam">
+        <div class="port-grid port-grid--portrait">
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DUPRgCSjm3l/" target="_blank" rel="noopener" style="background-image:url('images/sk_reel1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DT86vnhAf79/" target="_blank" rel="noopener" style="background-image:url('images/sk_reel2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DSD_l4WD0I1/" target="_blank" rel="noopener" style="background-image:url('images/sk_reel3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DUZYHcxjhgQ/" target="_blank" rel="noopener" style="background-image:url('images/sk_reel4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">Short Form</span></div></a>
+        </div>
+      </div>
+
+      <!-- Page 2 -->
+      <div class="work-page" data-section="short-form" data-page="1" data-title="Maxime Belma">
         <div class="port-grid port-grid--portrait">
           <a class="port-item port-item--portrait fade-up" href="https://www.tiktok.com/@max_real_estate/video/7597256734960323861" target="_blank" rel="noopener" style="background-image:url('images/mb_reel1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Maxime Belma</h4><span class="tag">Short Form</span></div></a>
           <a class="port-item port-item--portrait fade-up" href="https://www.tiktok.com/@max_real_estate/video/7593897412209446165" target="_blank" rel="noopener" style="background-image:url('images/mb_reel2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Maxime Belma</h4><span class="tag">Short Form</span></div></a>
@@ -120,13 +139,23 @@
         </div>
       </div>
 
-      <!-- Page 2 -->
-      <div class="work-page" data-section="short-form" data-page="1" data-title="Forge Studios">
+      <!-- Page 3 -->
+      <div class="work-page" data-section="short-form" data-page="2" data-title="Jacques Tanis">
         <div class="port-grid port-grid--portrait">
-          <div class="port-item port-item--portrait fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>Forge Launch Clip</span></div><div class="port-item__over"><h4>Forge Launch Clip</h4><span class="tag">Short Form</span></div></div>
-          <div class="port-item port-item--portrait fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg><span>Crest Reels Pack</span></div><div class="port-item__over"><h4>Crest Reels Pack</h4><span class="tag">Short Form</span></div></div>
-          <div class="port-item port-item--portrait fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Vertigo TikTok Series</span></div><div class="port-item__over"><h4>Vertigo TikTok Series</h4><span class="tag">Short Form</span></div></div>
-          <div class="port-item port-item--portrait fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>Raven Stories</span></div><div class="port-item__over"><h4>Raven Brand Stories</h4><span class="tag">Short Form</span></div></div>
+          <a class="port-item port-item--portrait fade-up" href="https://www.tiktok.com/@jacques.tanis/video/7554889218623900929" target="_blank" rel="noopener" style="background-image:url('images/jt_reel1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Jacques Tanis</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.tiktok.com/@jacques.tanis/video/7548228320903679239" target="_blank" rel="noopener" style="background-image:url('images/jt_reel2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Jacques Tanis</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.tiktok.com/@jacques.tanis/video/7550852110594641173" target="_blank" rel="noopener" style="background-image:url('images/jt_reel3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Jacques Tanis</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.tiktok.com/@jacques.tanis/video/7499235807656414519" target="_blank" rel="noopener" style="background-image:url('images/jt_reel4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Jacques Tanis</h4><span class="tag">Short Form</span></div></a>
+        </div>
+      </div>
+
+      <!-- Page 4 -->
+      <div class="work-page" data-section="short-form" data-page="3" data-title="AEC Financial Group">
+        <div class="port-grid port-grid--portrait">
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DKhR7disBpM/" target="_blank" rel="noopener" style="background-image:url('images/aec_reel1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>AEC Financial Group</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DRKP7z4DRGj/" target="_blank" rel="noopener" style="background-image:url('images/aec_reel2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>AEC Financial Group</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DMfc4WBxPTF/" target="_blank" rel="noopener" style="background-image:url('images/aec_reel3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>AEC Financial Group</h4><span class="tag">Short Form</span></div></a>
+          <a class="port-item port-item--portrait fade-up" href="https://www.instagram.com/reel/DKhR7disBpM/" target="_blank" rel="noopener" style="background-image:url('images/aec_reel4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>AEC Financial Group</h4><span class="tag">Short Form</span></div></a>
         </div>
       </div>
 
@@ -145,25 +174,47 @@
     <div class="work-section" id="tab-podcasts">
       <div class="work-section__hd">
         <span class="eyebrow">Podcasts</span>
-        <h2 id="hd-podcasts">The Founders Pod</h2>
+        <h2 id="hd-podcasts">Guide Étudiant</h2>
         <p>Full-production podcast shoots — multi-camera, professional audio, and colour-graded for every platform.</p>
       </div>
 
       <!-- Page 1 -->
-      <div class="work-page active" data-section="podcasts" data-page="0" data-title="The Founders Pod">
-        <div class="port-grid">
-          <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>The Founders Pod</span></div><div class="port-item__over"><h4>The Founders Pod</h4><span class="tag">Podcast</span></div></div>
-          <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>Apex CEO Series</span></div><div class="port-item__over"><h4>Apex CEO Podcast Series</h4><span class="tag">Podcast</span></div></div>
-          <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>Bloom Wellness Talks</span></div><div class="port-item__over"><h4>Bloom Wellness Talks</h4><span class="tag">Podcast</span></div></div>
+      <div class="work-page active" data-section="podcasts" data-page="0" data-title="Guide Étudiant">
+        <div class="port-grid port-grid--2col">
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/DqWA0Bpr0gY" target="_blank" rel="noopener" style="background-image:url('images/ge_ep1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Guide Étudiant</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/8tRN6a1evj0" target="_blank" rel="noopener" style="background-image:url('images/ge_ep2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Guide Étudiant</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/6yLuRbK0qRI" target="_blank" rel="noopener" style="background-image:url('images/ge_ep3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Guide Étudiant</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/SZYXLYfHNA4" target="_blank" rel="noopener" style="background-image:url('images/ge_ep4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Guide Étudiant</h4><span class="tag">Podcast</span></div></a>
         </div>
       </div>
 
       <!-- Page 2 -->
-      <div class="work-page" data-section="podcasts" data-page="1" data-title="Forge Tech Talk">
-        <div class="port-grid">
-          <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>Forge Tech Conversations</span></div><div class="port-item__over"><h4>Forge Tech Conversations</h4><span class="tag">Podcast</span></div></div>
-          <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>Solaris Leadership Show</span></div><div class="port-item__over"><h4>Solaris Leadership Show</h4><span class="tag">Podcast</span></div></div>
-          <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>Raven Creative Minds</span></div><div class="port-item__over"><h4>Raven Creative Minds</h4><span class="tag">Podcast</span></div></div>
+      <div class="work-page" data-section="podcasts" data-page="1" data-title="Elev8 Podcast">
+        <div class="port-grid port-grid--2col">
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/oRRgzdFylGw" target="_blank" rel="noopener" style="background-image:url('images/elev8_ep1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Elev8 Podcast</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/TNyeLW7vK8U" target="_blank" rel="noopener" style="background-image:url('images/elev8_ep2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Elev8 Podcast</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/Ka1jA4m12R0" target="_blank" rel="noopener" style="background-image:url('images/elev8_ep3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Elev8 Podcast</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/xhQKDckCMtQ" target="_blank" rel="noopener" style="background-image:url('images/elev8_ep4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Elev8 Podcast</h4><span class="tag">Podcast</span></div></a>
+        </div>
+      </div>
+
+      <!-- Page 3 -->
+      <div class="work-page" data-section="podcasts" data-page="2" data-title="Seeking Rizq Podcast">
+        <div class="port-grid port-grid--2col">
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/RptO3IBB_NQ" target="_blank" rel="noopener" style="background-image:url('images/sr_ep1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Seeking Rizq Podcast</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/49KtzLXORUA" target="_blank" rel="noopener" style="background-image:url('images/sr_ep2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Seeking Rizq Podcast</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/vJrL9juuxGU" target="_blank" rel="noopener" style="background-image:url('images/sr_ep3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Seeking Rizq Podcast</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/VTycSKrLXGo" target="_blank" rel="noopener" style="background-image:url('images/sr_ep4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Seeking Rizq Podcast</h4><span class="tag">Podcast</span></div></a>
+        </div>
+      </div>
+
+      <!-- Page 4 -->
+      <div class="work-page" data-section="podcasts" data-page="3" data-title="The Write-Off Meal">
+        <div class="port-grid port-grid--2col">
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/aRiFioarkm4" target="_blank" rel="noopener" style="background-image:url('images/wom_ep1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>The Write-Off Meal</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/wCp930S5lsU" target="_blank" rel="noopener" style="background-image:url('images/wom_ep2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>The Write-Off Meal</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/ANWsea_BWRc" target="_blank" rel="noopener" style="background-image:url('images/wom_ep3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>The Write-Off Meal</h4><span class="tag">Podcast</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/dDpm4XAD2bY" target="_blank" rel="noopener" style="background-image:url('images/wom_ep4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>The Write-Off Meal</h4><span class="tag">Podcast</span></div></a>
         </div>
       </div>
 
@@ -182,12 +233,32 @@
     <div class="work-section" id="tab-youtube">
       <div class="work-section__hd">
         <span class="eyebrow">YouTube</span>
-        <h2 id="hd-youtube">Nomad Films</h2>
+        <h2 id="hd-youtube">Gym Talk</h2>
         <p>Cinematic YouTube productions — from talking-head series to mini-documentaries — that grow channels and build brands.</p>
       </div>
 
       <!-- Page 1 -->
-      <div class="work-page active" data-section="youtube" data-page="0" data-title="Nomad Films">
+      <div class="work-page active" data-section="youtube" data-page="0" data-title="Gym Talk">
+        <div class="port-grid port-grid--2col">
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/o4CVWkbrlTc" target="_blank" rel="noopener" style="background-image:url('images/gt_ep1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Gym Talk</h4><span class="tag">YouTube</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/dmzzNeofL48" target="_blank" rel="noopener" style="background-image:url('images/gt_ep2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Gym Talk</h4><span class="tag">YouTube</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/Eah7PcfuXkM" target="_blank" rel="noopener" style="background-image:url('images/gt_ep3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Gym Talk</h4><span class="tag">YouTube</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/0hgmPdQZMCs" target="_blank" rel="noopener" style="background-image:url('images/gt_ep4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Gym Talk</h4><span class="tag">YouTube</span></div></a>
+        </div>
+      </div>
+
+      <!-- Page 2 -->
+      <div class="work-page" data-section="youtube" data-page="1" data-title="Serujan Kaneshalingam">
+        <div class="port-grid port-grid--2col">
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/S41xXbJydUU" target="_blank" rel="noopener" style="background-image:url('images/sk_yt1.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">YouTube</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/sJ5OcD7ajCk" target="_blank" rel="noopener" style="background-image:url('images/sk_yt2.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">YouTube</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/NtN7bts-O-M" target="_blank" rel="noopener" style="background-image:url('images/sk_yt3.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">YouTube</span></div></a>
+          <a class="port-item port-item--yt fade-up" href="https://youtu.be/3F4kNz95O3s" target="_blank" rel="noopener" style="background-image:url('images/sk_yt4.jpg');background-size:cover;background-position:center;display:block;text-decoration:none"><div class="port-item__over"><h4>Serujan Kaneshalingam</h4><span class="tag">YouTube</span></div></a>
+        </div>
+      </div>
+
+      <!-- Page 3 -->
+      <div class="work-page" data-section="youtube" data-page="2" data-title="Nomad Films">
         <div class="port-grid">
           <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Solaris Brand Film</span></div><div class="port-item__over"><h4>Solaris Brand Documentary</h4><span class="tag">YouTube</span></div></div>
           <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>Nomad Travel Series</span></div><div class="port-item__over"><h4>Nomad Travel Series</h4><span class="tag">YouTube</span></div></div>
@@ -195,8 +266,8 @@
         </div>
       </div>
 
-      <!-- Page 2 -->
-      <div class="work-page" data-section="youtube" data-page="1">
+      <!-- Page 4 -->
+      <div class="work-page" data-section="youtube" data-page="3">
         <div class="port-grid">
           <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Apex CEO Vlog</span></div><div class="port-item__over"><h4>Apex CEO Vlog Series</h4><span class="tag">YouTube</span></div></div>
           <div class="port-item fade-up"><div class="port-item__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>Crest Behind the Brand</span></div><div class="port-item__over"><h4>Crest Behind the Brand</h4><span class="tag">YouTube</span></div></div>
@@ -271,6 +342,8 @@ function goToPage(section, idx) {
   idx = Math.max(0, Math.min(total - 1, idx));
   _pages[section] = idx;
   pages.forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+  var title = pages[idx].dataset.title;
+  if (title) { var hd = document.getElementById('hd-' + section); if (hd) hd.textContent = title; }
   document.getElementById('prev-' + section).disabled = idx === 0;
   document.getElementById('next-' + section).disabled = idx === total - 1;
   document.querySelectorAll('#dots-' + section + ' .work-pg-dot').forEach(function(d, i) {
