@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
   <style>
     /* ── Marquee ── */
     .marquee-wrap {
@@ -148,11 +148,25 @@
       .stats-hl-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
-      .home-work-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-hl-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-hl { padding: 60px 0; }
+      .work-reel__item { height: clamp(140px, 22vw, 310px); }
+      .marquee-wrap { padding: 1.25rem 0; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: clamp(1.75rem, 8vw, 2.25rem) !important; }
+      .hero h1 br { display: none; }
+      .hero__content { padding: 32px 0 20px !important; }
+      .hero__eyebrow { margin-bottom: 1.25rem; }
+      .hero__desc { font-size: .95rem; }
       .testi-grid { grid-template-columns: 1fr; }
       .stats-hl-grid { grid-template-columns: 1fr; }
-      .stats-hl-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); padding: 2.5rem 1rem; }
+      .stats-hl { padding: 50px 0; }
+      .stats-hl-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); padding: 2rem 0; }
       .stats-hl-item:last-child { border-bottom: none; }
+      .stats-hl-item__num { font-size: clamp(2.5rem, 12vw, 4rem); }
+      .work-reel__item { height: clamp(120px, 20vw, 310px); }
     }
   </style>
 </head>
@@ -196,7 +210,7 @@
     <div class="hero__eyebrow">
       <span class="eyebrow">Media Production Studio</span>
     </div>
-    <h1>we turn your ideas<br>into content that<br><em>performs.</em></h1>
+    <h1>we turn your ideas <br>into content that <br><em>performs.</em></h1>
     <p class="hero__desc">
       Short form, podcasts &amp; YouTube — produced at a level that builds audiences and grows brands.
     </p>

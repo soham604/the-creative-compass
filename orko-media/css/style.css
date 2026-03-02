@@ -55,7 +55,7 @@ h1,h2,h3,h4,h5 {
   line-height: 1.06;
   color: var(--ink);
 }
-h1 { font-size: clamp(2.75rem,6vw,5.25rem); font-weight: 900; }
+h1 { font-size: clamp(2rem,7vw,5.25rem); font-weight: 900; }
 h2 { font-size: clamp(2rem,4vw,3.5rem);  font-weight: 800; }
 h3 { font-size: clamp(1.15rem,2vw,1.5rem); font-weight: 700; }
 h4 { font-size: 1rem; font-weight: 700; }
@@ -686,10 +686,15 @@ details p { padding-bottom: 1.4rem; font-size: .9rem; }
   .svc-detail__grid { grid-template-columns: 100px 1fr; }
 }
 @media (max-width: 768px) {
-  :root { --py: 75px; --nav-h: 64px; }
+  :root { --py: 65px; --nav-h: 64px; }
   .nav__links, .nav__cta { display: none; }
   .nav__hamburger { display: flex; }
+  .container { padding: 0 1.25rem; }
+  .hero__content { padding: 48px 0 28px; }
+  .hero__desc { font-size: 1rem; }
   .hero__bar  { grid-template-columns: 1fr 1fr; }
+  .hero__bar-item { padding: 1.5rem 1.25rem; }
+  .hero__bar-item:first-child { padding-left: 1.25rem; }
   .services-grid { grid-template-columns: 1fr; }
   .work-grid  { grid-template-columns: 1fr 1fr; }
   .work-card--wide { grid-column: span 2; }
@@ -704,13 +709,21 @@ details p { padding-bottom: 1.4rem; font-size: .9rem; }
   .svc-detail__grid { grid-template-columns: 1fr; gap: 1rem; }
   .svc-detail__num { font-size: 3rem; }
   .port-grid  { grid-template-columns: 1fr 1fr; }
-  .cta-band   { padding: 80px 0; }
+  .cta-band   { padding: 70px 0; }
+  .process-item { grid-template-columns: 54px 1fr; gap: 1.5rem; }
+  .process-item__n { font-size: 2.5rem; }
 }
 @media (max-width: 480px) {
+  h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+  .hero h1 br { display: none; }
   .work-grid  { grid-template-columns: 1fr; }
   .work-card--wide { grid-column: span 1; aspect-ratio: 4/3; }
   .port-grid  { grid-template-columns: 1fr; }
   .team-grid  { grid-template-columns: 1fr; }
   .hero__bar  { grid-template-columns: 1fr 1fr; }
-  .hero__bar-item { padding: 1.5rem 1rem; }
+  .hero__bar-item { padding: 1.25rem 1rem; }
+  .hero__bar-item:first-child { padding-left: 1rem; }
+  .hero__bar-item:nth-child(3) { padding-left: 1rem; }
+  .hero__bar-num { font-size: 2rem; }
+  .sh { margin-bottom: 2.25rem; }
 }
