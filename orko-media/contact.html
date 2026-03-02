@@ -45,19 +45,34 @@
         </div>
       </div>
 
-      <!-- Form -->
+      <!-- Cal.com booking -->
       <div class="contact-form fade-up">
-        <span class="eyebrow">Send a message</span>
-        <h3 style="margin:.65rem 0 .5rem">Start a conversation</h3>
-        <p style="margin-bottom:2rem">Tell us about your project and we'll put together a tailored proposal.</p>
-        <form id="contactForm" style="display:flex;flex-direction:column;gap:1rem">
-          <div class="form-row"><div class="form-group"><label>Your name *</label><input type="text" placeholder="Alex Johnson" required></div><div class="form-group"><label>Company</label><input type="text" placeholder="Acme Brand"></div></div>
-          <div class="form-row"><div class="form-group"><label>Email *</label><input type="email" placeholder="you@company.com" required></div><div class="form-group"><label>Phone</label><input type="tel" placeholder="+1 555 000 0000"></div></div>
-          <div class="form-group"><label>Service you're interested in</label><select><option value="">Select a service…</option><option>Commercial Video</option><option>Photography</option><option>Post-Production</option><option>Branded Content</option><option>Studio Hire</option><option>Not sure yet</option></select></div>
-          <div class="form-group"><label>Approximate budget</label><select><option value="">Select a range…</option><option>Under $5,000</option><option>$5,000 – $15,000</option><option>$15,000 – $50,000</option><option>$50,000+</option><option>Prefer to discuss</option></select></div>
-          <div class="form-group"><label>Tell us about your project *</label><textarea placeholder="What are you trying to achieve? Who's your audience? What's the timeline? Any references you'd like to share?" style="min-height:130px" required></textarea></div>
-          <button type="submit" class="btn btn--black" style="align-self:flex-start">Send Message <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
-        </form>
+        <span class="eyebrow">Book a call</span>
+        <h3 style="margin:.65rem 0 .5rem">Schedule a discovery call</h3>
+        <p style="margin-bottom:2rem">Pick a time that works for you — we'll discuss your project and put together a tailored proposal.</p>
+        <!-- Cal inline embed -->
+        <div style="min-height:600px;border-radius:var(--r-lg);overflow:hidden">
+          <cal-inline
+            namespace="appel-decouverte"
+            style="width:100%;height:100%;min-height:600px;display:block"
+            calLink="orkomedia/appel-decouverte"
+            config='{"layout":"month_view"}'
+          ></cal-inline>
+        </div>
+        <script type="text/javascript">
+          (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); };
+          })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", "appel-decouverte", { origin: "https://cal.com" });
+          Cal.ns["appel-decouverte"]("inline", {
+            elementOrSelector: "cal-inline[namespace='appel-decouverte']",
+            calLink: "orkomedia/appel-decouverte",
+            layout: "month_view"
+          });
+          Cal.ns["appel-decouverte"]("ui", { hideEventTypeDetails: false, layout: "month_view" });
+        </script>
       </div>
     </div>
   </div>
